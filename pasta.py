@@ -19,6 +19,7 @@ def make_pasta(event):
 
 #setting up the widow
 window = tkinter.Tk()
+window.iconbitmap('pasta.ico')
 window.title('Oishii pasta')
 window.geometry('300x300')
 
