@@ -1,6 +1,8 @@
 #©2021 引きこもりゲーマー
-import tkinter, wave
+import tkinter
 import pygame.mixer
+from time import sleep
+
 
 #Initialize pygame mixer
 pygame.mixer.init(frequency = 44100, size = -16, channels = 2, buffer = 4096)
@@ -12,9 +14,14 @@ tukutta_file = 'tukutta.wav'
 music = pygame.mixer.Sound(pasta_file)
 tukutta = pygame.mixer.Sound(tukutta_file)
 
-def make_pasta(event):
+
+def make_pasta(event):#when the button pressed 
+    channel_music.set_volume(0)
     channel_tukutta = tukutta.play()
-    channel_tukutta.set_volume(2)
+    channel_tukutta.set_volume(30)
+    sound_length = round(tukutta.get_length(), 4)
+    sleep(sound_length)
+    channel_music.set_volume(30)
     
 
 #setting up the widow
@@ -29,16 +36,7 @@ button.bind('<Button-1>', make_pasta)
 button.pack()
 
 
-
-
 channel_music = music.play()
-
-music_length = music.get_length()
-print(music_length)
-
-channel_music.set_volume(2)
-
-sound_end = channel_music.get_endevent()
-
+channel_music.set_volume(30)
 
 window.mainloop()
